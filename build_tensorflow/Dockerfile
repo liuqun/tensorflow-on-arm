@@ -13,4 +13,4 @@ WORKDIR /build/
 COPY * ./
 RUN chmod 755 *.sh
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/build/build_tensorflow.sh"]
