@@ -3,6 +3,8 @@ services:
   - docker
 language: bash
 install:
-  - docker run --rm hello-world
+  - pushd build_tensorflow
+  - docker build -t local/debian:build -f Dockerfile .
+  - popd
 script:
   - echo "Done!"
