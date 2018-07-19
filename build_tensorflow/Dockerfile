@@ -7,6 +7,7 @@ RUN dpkg --add-architecture armhf \
         curl zip unzip libtool swig libpng-dev zlib1g-dev pkg-config git g++ wget xz-utils \
         python3-numpy python3-dev python3-pip python3-mock \
         libpython3-all-dev:armhf \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3 1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . /build
