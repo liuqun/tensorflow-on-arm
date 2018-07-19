@@ -6,5 +6,7 @@ install:
   - pushd build_tensorflow
   - docker build -t local/debian:build -f Dockerfile .
   - popd
+  - mkdir -p rpi
 script:
-  - echo "Done!"
+  # Build for Raspberry Pi 2/3 (armv7l)
+  - docker run --rm -v $TRAVIS_BUILD_DIR/rpi:/tmp/tensorflow_pkg local/debian:build /build/build_tensorflow.sh /build/configs/rpi.conf

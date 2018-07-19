@@ -9,4 +9,8 @@ RUN dpkg --add-architecture armhf \
         libpython3-all-dev:armhf \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /build/
+COPY * ./
+RUN chmod 755 *.sh
+
 CMD ["/bin/bash"]
