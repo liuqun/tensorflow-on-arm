@@ -9,8 +9,8 @@ RUN dpkg --add-architecture armhf \
         libpython3-all-dev:armhf \
     && rm -rf /var/lib/apt/lists/*
 
+COPY . /build
 WORKDIR /build/
-COPY * ./
 RUN chmod 755 *.sh
 
 ENTRYPOINT ["/build/build_tensorflow.sh"]
