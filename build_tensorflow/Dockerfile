@@ -1,0 +1,12 @@
+FROM debian:stretch
+
+RUN dpkg --add-architecture armhf \
+    && echo "deb [arch=armhf] http://httpredir.debian.org/debian/ stretch main contrib non-free" > /etc/apt/sources.list.d/armhf.list \
+    && apt-get update && apt-get install -y \
+        openjdk-8-jdk automake autoconf \
+        curl zip unzip libtool swig libpng12-dev zlib1g-dev pkg-config git g++ wget xz-utils \
+        python3-numpy python3-dev python3-pip python3-mock \
+        libpython3-all-dev:armhf \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["/bin/bash"]
