@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker
+language: bash
+install:
+  - docker run --rm hello-world
+script:
+  - echo "Done!"
