@@ -1,0 +1,23 @@
+image: ubuntu
+
+services:
+- docker
+
+environment:
+  global:
+    PREBUILT_DOCKER_IMAGE: "daocloud.io/liuqun1986/tensorflow-on-arm:latest"
+  matrix:
+    - TARGET_NAME: "rpi"
+    - TARGET_NAME: "rpi_one"
+    - TARGET_NAME: "rpi_one_openblas"
+    - TARGET_NAME: "odroidc1"
+    - TARGET_NAME: "odroidc2"
+    - TARGET_NAME: "beagle_black"
+
+install:
+- mkdir -p $TARGET_NAME
+
+build: off
+
+test_script:
+- docker run -v $APPVEYOR_BUILD_FOLDER/$TARGET_NAME:/tmp -v $APPVEYOR_BUILD_FOLDER/build_tensorflow:/root $PREBUILT_DOCKER_IMAGE /root/build_tensorflow.sh /root/configs/$TARGET_NAME.conf
