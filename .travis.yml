@@ -15,4 +15,4 @@ env:
 install:
   - mkdir -p $TARGET_NAME
 script:
-  - docker run --rm -v $TRAVIS_BUILD_DIR/$TARGET_NAME:/tmp $PREBUILT_DOCKER_IMAGE /root/build_tensorflow.sh /root/configs/$TARGET_NAME.conf
+  - docker run --rm -v $TRAVIS_BUILD_DIR/$TARGET_NAME:/tmp -v $TRAVIS_BUILD_DIR/build_tensorflow:/root $PREBUILT_DOCKER_IMAGE /root/build_tensorflow.sh /root/configs/$TARGET_NAME.conf
